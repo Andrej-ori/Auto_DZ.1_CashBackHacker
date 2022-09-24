@@ -65,4 +65,60 @@ public class CashbackHackServiceTest {
     }
 
     // тесты на JUnit5
+
+     @org.junit.jupiter.api.Test
+     // меньше нуля на 1
+     public void lessThanZeroBy1Jupiter() {
+         org.junit.jupiter.api.Assertions.assertThrows(RuntimeException.class, () ->{
+             service.remain(-1);
+         });
+     }
+
+     @org.junit.jupiter.api.Test
+     // равен нулю
+     public void equalsZeroJupiter() {
+         org.junit.jupiter.api.Assertions.assertEquals(1000, service.remain(0));
+     }
+
+     @org.junit.jupiter.api.Test
+     // больше нуля на 1
+     public void greaterThanZeroBy1Jupiter() {
+         org.junit.jupiter.api.Assertions.assertEquals(999, service.remain(1));
+     }
+
+     @org.junit.jupiter.api.Test
+     // меньше лимита
+     public void lessThanTheLimitJupiter() {
+         org.junit.jupiter.api.Assertions.assertEquals(700, service.remain(300));
+     }
+
+     @org.junit.jupiter.api.Test
+     // меньше лимита на 1
+     public void lessThanTheLimitBy1Jupiter() {
+         org.junit.jupiter.api.Assertions.assertEquals(1, service.remain(999));
+     }
+
+     @org.junit.jupiter.api.Test
+     // равно лимиту
+     public void equalToTheLimitJupiter() {
+         org.junit.jupiter.api.Assertions.assertEquals(0, service.remain(1000));
+     }
+
+     @org.junit.jupiter.api.Test
+     // больше лимита на 1
+     public void moreThanTheLimitBy1Jupiter() {
+         org.junit.jupiter.api.Assertions.assertEquals(999, service.remain(1001));
+     }
+
+     @org.junit.jupiter.api.Test
+     // больше лимита
+     public void overLimitJupiter() {
+         org.junit.jupiter.api.Assertions.assertEquals(600, service.remain(1400));
+     }
+
+     @org.junit.jupiter.api.Test
+     // кратно лимиту
+     public void multipleOfTheLimitJupiter() {
+         org.junit.jupiter.api.Assertions.assertEquals(0, service.remain(3000));
+     }
 }
