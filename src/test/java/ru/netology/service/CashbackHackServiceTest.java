@@ -1,65 +1,65 @@
 package ru.netology.service;
 
-import org.junit.Test;
+ // import org.junit.Test;
 
-import static org.junit.Assert.*;
+ // import static org.junit.Assert.*;
 public class CashbackHackServiceTest {
 
     CashbackHackService service = new CashbackHackService();
 
-    @Test
+    @org.junit.Test
     // меньше нуля на 1
     public void lessThanZeroBy1() {
-        assertThrows(RuntimeException.class, () ->{
+        org.junit.Assert.assertThrows(RuntimeException.class, () ->{
             service.remain(-1);
         });
     }
 
-    @Test
+    @org.junit.Test
     // равен нулю
     public void equalsZero() {
-        assertEquals(1000, service.remain(0));
+        org.junit.Assert.assertEquals(1000, service.remain(0));
     }
 
-    @Test
+    @org.junit.Test
     // больше нуля на 1
     public void greaterThanZeroBy1() {
-        assertEquals(999, service.remain(1));
+        org.junit.Assert.assertEquals(999, service.remain(1));
     }
 
-    @Test
+    @org.junit.Test
     // меньше лимита
     public void lessThanTheLimit() {
-        assertEquals(700, service.remain(300));
+        org.junit.Assert.assertEquals(700, service.remain(300));
     }
 
-    @Test
+    @org.junit.Test
     // меньше лимита на 1
     public void lessThanTheLimitBy1() {
-        assertEquals(1, service.remain(999));
+        org.junit.Assert.assertEquals(1, service.remain(999));
     }
 
-    @Test
+    @org.junit.Test
     // равно лимиту
     public void equalToTheLimit() {
-        assertEquals(0, service.remain(1000));
+        org.junit.Assert.assertEquals(0, service.remain(1000));
     }
 
-    @Test
+    @org.junit.Test
     // больше лимита на 1
     public void moreThanTheLimitBy1() {
-        assertEquals(999, service.remain(1001));
+        org.junit.Assert.assertEquals(999, service.remain(1001));
     }
 
-    @Test
+    @org.junit.Test
     // больше лимита
     public void overLimit() {
-        assertEquals(600, service.remain(1400));
+        org.junit.Assert.assertEquals(600, service.remain(1400));
     }
 
-    @Test
+    @org.junit.Test
     // кратно лимиту
     public void multipleOfTheLimit() {
-        assertEquals(0, service.remain(3000));
+        org.junit.Assert.assertEquals(0, service.remain(3000));
     }
 }
